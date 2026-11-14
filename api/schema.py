@@ -25,14 +25,15 @@ class Analysis(BaseModel):
     abstain: bool = Field(
         ...,
         description=(
-            "True only when the input lacks enough intelligible, substantive content or "
-            "context for meaningful analysis (for example, a generic sentence with no "
-            "claim or rhetorical content). A short but clear rhetorical move is analysable. "
-            "Do not abstain merely because text is satirical, opinionated, a copypasta, "
-            "neutral, or contains no clear technique."
+            "True when the input lacks enough content or context for meaningful analysis, "
+            "or when no clear technique is supported by an exact quote. A very short "
+            "standalone preference or observation without reasoning or rhetorical framing "
+            "(for example, 'I don't like apples.') is insufficient. Do not abstain merely "
+            "because developed text is satirical, opinionated, neutral, or a copypasta; "
+            "examine it, then abstain if no technique is clearly supported."
         ),
     )
     abstain_reason: Optional[str] = Field(
         None,
-        description="If abstaining, explain what substantive content or context is missing; otherwise null.",
+        description="If abstaining, distinguish insufficient content/context from finding no clearly supported technique; otherwise null.",
     )

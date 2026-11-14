@@ -48,7 +48,7 @@
             <div id="metrics-display" aria-live="polite">Loading counters...</div>
             <h3>Most flagged techniques</h3>
             <ol id="misattribution-ranking"><li>Loading feedback...</li></ol>
-            <p class="metrics-note">Abstention is based on substance, not length alone: a generic line such as “This is a sentence” has no claim or rhetorical content to examine, while a short but clear rhetorical move can still be analysed. Extensive texts—including satire, copypastas, neutral reporting, and quoted rhetoric—are still analysed; they may simply produce no technique spans. Quotes that fail the exact-substring check are removed. These are operational counts, not accuracy scores.</p>
+            <p class="metrics-note">Abstention is based on substance, not length alone: a very short standalone preference such as “I don't like apples” has no reasoning or rhetorical framing to map. A text is also marked as abstained when analysis finds no technique supported by an exact quote. Longer texts—including satire, copypastas, neutral reporting, and quoted rhetoric—are still examined; if no clear technique is found, they abstain rather than receive a forced label. Quotes that fail the exact-substring check are removed. These are operational counts, not accuracy scores.</p>
             <p class="metrics-note">Technique flags are user-submitted feedback, not verified errors. Counts reset when the API process restarts.</p>
         </section>
 
@@ -77,7 +77,7 @@
             <h2>About this tool's perspective</h2>
             <p>This tool is explicitly not "neutral." We reject the centrist myth that "balance" means treating all claims as equally valid—a framing that often functions to manufacture consent for the status quo. Instead, this tool makes the machinery of persuasion visible, exposing how language is used to shape public perception and protect institutional power.</p>
             <p>It does not assess factual accuracy, nor does it judge moral character. It does not explicitly label anything "propaganda." Instead, it isolates the exact evidence, names the technique, and explains the mechanism, handing the tools of critical analysis back to the reader.</p>
-            <p>Abstention is reserved for text with too little substantive content or context to examine. A concise but clear rhetorical tactic should still be mapped. Satire, copypastas, strong opinions, neutral reporting, and quoted rhetoric are still analysed when there is enough substance; the tool may return no technique spans if no clear technique is present.</p>
+            <p>Abstention is used when there is too little content or context to examine, or when no rhetorical technique can be supported by an exact quote. A very short standalone preference such as “I don't like apples” gives no reasoning or rhetorical framing to map; a concise but clear rhetorical tactic should still be identified. Satire, copypastas, strong opinions, neutral reporting, and quoted rhetoric are still examined; when no clear technique is present, the tool abstains rather than forcing a label.</p>
             <p>Use this map as a starting point for your own structural critique, not as a conclusion.</p>
         </section>
     </main>
