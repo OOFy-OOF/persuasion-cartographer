@@ -101,4 +101,8 @@ mark {
     border-radius: 8px;
     margin-bottom: 1.5rem;
 }
-#metrics-display { font-family: monospace; background: var(--bg); padding: 1rem; border-radius: 4px; }
+#metrics-display { display: flex; flex-wrap: wrap; gap: 1rem; }
+.metric { flex: 1 1 140px; background: var(--bg); padding: 1rem; border-radius: 6px; }
+.metric strong, .metric span { display: block; }
+.metric strong { font-size: 1.5rem; }
+.metric span, .metrics-note { color: var(--muted); font-size: 0.9rem; }

@@ -33,9 +33,10 @@
         </section>
 
         <section id="metrics-section">
-            <h2>How honest is this tool?</h2>
-            <p>Metrics from our hand-labeled evaluation set.</p>
-            <div id="metrics-display">Loading metrics...</div>
+            <h2>Live usage counters</h2>
+            <p>Counts since this API process started; they reset when it restarts.</p>
+            <div id="metrics-display" aria-live="polite">Loading counters...</div>
+            <p class="metrics-note">An abstention is recorded when the model says it cannot support an analysis with an exact quote. Quotes that fail the exact-substring check are removed and counted as quote drops. These are operational counts, not accuracy scores.</p>
         </section>
 
         <section class="about-section">

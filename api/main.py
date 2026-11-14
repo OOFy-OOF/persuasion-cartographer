@@ -2,10 +2,9 @@ from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from dotenv import load_dotenv
-from analyzer import analyze, DROPPED_SPANS
+from analyzer import analyze, metrics_snapshot
 from schema import Analysis
 import os
-from datetime import datetime, timezone
 
 load_dotenv()
 
@@ -26,16 +25,7 @@ def health():
 
 @app.get("/metrics")
 def metrics():
-    import analyzer
-    return {
-        "n_examples": 0,
-        "threshold": 0.5,
-        "overall": {"precision": 0, "recall": 0, "f1": 0, "fp_rate": 0, "abstention_rate": 0},
-        "per_technique": [],
-        "inter_annotator": {"kappa": 0, "subset_size": 0},
-        "quote_grounding_drops": analyzer.DROPPED_SPANS,
-        "generated_at": datetime.now(timezone.utc).isoformat()
-    }
+    return {**metrics_snapshot(), "scope": "since_api_start"}
 
 # Serve the frontend ONLY if running locally (on the VPS, Caddy handles this)
 web_dir = os.path.join(os.path.dirname(__file__), "..", "web")

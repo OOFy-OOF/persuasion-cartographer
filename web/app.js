@@ -85,13 +85,21 @@ function renderResults(data) {
     });
 }
 
-// Fetch Metrics on load
-fetch('/metrics').then(r => r.json()).then(data => {
-    const overall = data.overall || {};
-    document.getElementById('metrics-display').innerHTML = `
-        n_examples: ${data.n_examples || 0} | threshold: ${data.threshold || 0.5}<br>
-        precision: ${overall.precision || 0} | recall: ${overall.recall || 0}<br>
-        FP rate: ${overall.fp_rate || 0} | abstention: ${overall.abstention_rate || 0}<br>
-        drops: ${data.quote_grounding_drops || 0}
-    `;
-});
+async function refreshMetrics() {
+    const display = document.getElementById('metrics-display');
+    try {
+        const res = await fetch('/metrics');
+        if (!res.ok) throw new Error('Metrics request failed');
+        const data = await res.json();
+        display.innerHTML = `
+            <div class="metric"><strong>${data.analyses}</strong><span>analyses</span></div>
+            <div class="metric"><strong>${data.abstentions}</strong><span>abstentions</span></div>
+            <div class="metric"><strong>${data.quote_grounding_drops}</strong><span>unverifiable quotes removed</span></div>
+        `;
+    } catch (error) {
+        display.textContent = 'Live counters are temporarily unavailable.';
+    }
+}
+
+refreshMetrics();
+setInterval(refreshMetrics, 10000);
