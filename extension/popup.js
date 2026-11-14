@@ -1,9 +1,9 @@
-const API_URL = 'https://persuasioncartographer.duckdns.org/analyze';
-
 const textInput = document.getElementById('text-input');
 const analyzeButton = document.getElementById('analyze-button');
 const status = document.getElementById('status');
 const results = document.getElementById('results');
+
+document.getElementById('settings-button').addEventListener('click', () => chrome.runtime.openOptionsPage());
 
 async function loadSelection() {
     try {
@@ -87,7 +87,24 @@ analyzeButton.addEventListener('click', async () => {
     status.classList.remove('error');
     results.classList.add('hidden');
     try {
-        const response = await fetch(API_URL, {
+        const { analyzeEndpoint } = await chrome.storage.local.get('analyzeEndpoint');
+        if (!analyzeEndpoint) {
+            status.textContent = 'Configure your deployed API endpoint before analyzing.';
+            status.classList.add('error');
+            await chrome.runtime.openOptionsPage();
+            return;
+        }
+
+        const endpoint = new URL(analyzeEndpoint);
+        const hasPermission = await chrome.permissions.contains({ origins: [`${endpoint.origin}/*`] });
+        if (!hasPermission) {
+            status.textContent = 'The API host permission is missing. Reconfigure the endpoint and grant access.';
+            status.classList.add('error');
+            await chrome.runtime.openOptionsPage();
+            return;
+        }
+
+        const response = await fetch(analyzeEndpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text })

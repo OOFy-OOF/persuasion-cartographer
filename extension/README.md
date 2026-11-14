@@ -20,7 +20,7 @@ This extension is built for **all Chromium-based browsers** (Google Chrome, Micr
 
 This extension requires a Chromium-based browser (version 127 or later). If your browser was already open when you installed or updated the extension, reload it from the extension management page so the context-menu item is registered.
 
-The extension sends the submitted passage to `https://persuasioncartographer.duckdns.org/analyze`. The host permission in `manifest.json` is scoped to that API host. Update `API_URL` and the matching `host_permissions` entry if the API domain changes.
+On first use, open the extension's **Configure API endpoint** settings and enter your deployment's full HTTPS analysis URL, such as `https://your-domain.example/analyze`. The extension asks Chrome for access to only that host when you save. For local development, HTTP is allowed only on localhost. If you move the API, update the endpoint in settings; the previous host permission is removed when possible.
 
 ## Privacy & Limitations
 
