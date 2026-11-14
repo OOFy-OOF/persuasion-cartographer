@@ -47,6 +47,16 @@ def analyze(text: str) -> Analysis:
     
     before = len(result.technique_spans)
     result.technique_spans = [span for span in result.technique_spans if span.quote in text]
+    if result.technique_spans:
+        # A grounded technique is an analysis, not an abstention. Keep the global
+        # abstain flag consistent with the spans that survived exact-quote validation.
+        result.abstain = False
+        result.abstain_reason = None
+    else:
+        result.abstain = True
+        if not result.abstain_reason:
+            result.abstain_reason = "No rhetorical technique could be supported by an exact quote from the text."
+
     with _METRICS_LOCK:
         _METRICS["analyses"] += 1
         _METRICS["abstentions"] += int(result.abstain)
