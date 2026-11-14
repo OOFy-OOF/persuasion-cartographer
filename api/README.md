@@ -11,7 +11,7 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 export AI_ROUTER_API_KEY="your-api-key"
-export AI_ROUTER_BASE_URL="https://your-openai-compatible-router.example/v1"
+export AI_ROUTER_BASE_URL="https://your-openai-compatible-provider.example/v1"
 export AI_ROUTER_MODEL="gpt-5.6-luna"
 uvicorn main:app --reload --port 8000
 ```
@@ -19,6 +19,8 @@ uvicorn main:app --reload --port 8000
 On Windows PowerShell, activate the environment with `.venv\Scripts\Activate.ps1` and set variables with `$env:AI_ROUTER_API_KEY = "..."`, `$env:AI_ROUTER_BASE_URL = "..."`, and `$env:AI_ROUTER_MODEL = "gpt-5.6-luna"`.
 
 The service loads environment variables from the environment and a discoverable `.env` file. The repository's root `.env.example` shows the deployment variable names. Do not commit API keys.
+
+The configured provider must implement OpenAI-style Chat Completions and support JSON-object response mode, which the analysis request uses.
 
 The project root's `docker-compose.yml` builds this directory using `Dockerfile`. When the sibling `web/` directory exists, the API also serves the static site at `/` for local use. FastAPI's interactive documentation is at `/docs`.
 

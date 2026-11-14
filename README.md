@@ -10,14 +10,14 @@ The tool prioritises recall over precision: it analyses jokes, satire, and stron
 - `api/` — FastAPI service, analysis prompt, response schema, and Dockerfile. See [API documentation](./api/README.md).
 - `extension/` — Manifest V3 extension for Chromium-based browsers. See its [README](./extension/README.md).
 - `docker-compose.yml` and `Caddyfile` — production-style deployment with HTTPS and reverse proxying.
-- `setup.sh` — interactive Bash setup for Docker deployments using Hostinger AI Router.
+- `setup.sh` — interactive Bash setup for Docker deployments using an OpenAI-compatible API provider.
 - `eval/` — evaluation materials.
 
 ## Deploy with Docker Compose
 
-You need Docker Engine with the Compose plugin, a domain whose DNS points to your server, and an API key for an OpenAI-compatible model router.
+You need Docker Engine with the Compose plugin, a domain whose DNS points to your server, and credentials for an OpenAI-compatible API provider (API key, base URL, and a model ID supported by that provider). The provider must support OpenAI-style Chat Completions and JSON-object responses.
 
-For the interactive setup, run `./setup.sh` in Bash (for example, on Linux, macOS, or WSL). It asks for the domain, Hostinger AI Router API key, and model, writes a local `.env` file, then builds and starts the services. The script uses `https://router.hostinger.com/v1` as its router endpoint and defaults to `gpt-5.6-luna`.
+For interactive VPS deployment, run `./setup.sh` in Bash (for example, on Linux, macOS, or WSL). It asks for the public domain, API key, API base URL, and model ID, writes a local `.env` file, then builds and starts the services. It defaults the model ID to `gpt-5.6-luna`, which you can change to one supported by your provider.
 
 To configure the deployment manually, copy `.env.example` to `.env`, set `SITE_DOMAIN`, `AI_ROUTER_API_KEY`, `AI_ROUTER_BASE_URL`, and `AI_ROUTER_MODEL`, then run:
 
@@ -25,13 +25,13 @@ To configure the deployment manually, copy `.env.example` to `.env`, set `SITE_D
 docker compose up -d --build
 ```
 
-The deployment serves the website and extension download through Caddy on ports 80 and 443. Caddy obtains and renews HTTPS certificates for `SITE_DOMAIN`. View service logs with `docker compose logs -f`; stop the services with `docker compose down`.
+The deployment serves the website and extension download through Caddy on ports 80 and 443. Caddy obtains and renews HTTPS certificates for `SITE_DOMAIN`. This public-domain and Caddy setup is for VPS deployment; it is not needed to run the project locally. View service logs with `docker compose logs -f`; stop the services with `docker compose down`.
 
 Keep `.env` private. It contains the API key and is excluded from version control.
 
 ## Run the API locally
 
-The API uses Python 3.12. Create and activate a virtual environment, install `api/requirements.txt`, and provide `AI_ROUTER_API_KEY`, `AI_ROUTER_BASE_URL`, and `AI_ROUTER_MODEL`. From the `api/` directory, start the development server with:
+The project does not require a VPS or Hostinger to run locally. The API uses Python 3.12. Create and activate a virtual environment, install `api/requirements.txt`, and provide an API key, the base URL for your OpenAI-compatible provider, and a model ID supported by that provider as `AI_ROUTER_API_KEY`, `AI_ROUTER_BASE_URL`, and `AI_ROUTER_MODEL`. From the `api/` directory, start the development server with:
 
 ```sh
 uvicorn main:app --reload --port 8000

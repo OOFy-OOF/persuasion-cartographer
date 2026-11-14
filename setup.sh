@@ -17,7 +17,7 @@ if [[ ! "$SITE_DOMAIN" =~ ^[[:alnum:].-]+$ ]]; then
 fi
 
 # Prompt for API Key (hidden)
-echo "Please enter your Hostinger AI Router API Key:"
+echo "Please enter your OpenAI-compatible API provider key:"
 read -r -s API_KEY
 echo ""
 if [ -z "$API_KEY" ]; then
@@ -25,9 +25,17 @@ if [ -z "$API_KEY" ]; then
     exit 1
 fi
 
+# Prompt for API base URL
+echo "Enter the base URL for your OpenAI-compatible API (for example, https://api.example.com/v1):"
+read -r AI_ROUTER_BASE_URL
+if [ -z "$AI_ROUTER_BASE_URL" ]; then
+    echo "An API base URL is required."
+    exit 1
+fi
+
 # Prompt for Model
-echo "Enter the AI Model to use (Enter for default):"
-read MODEL
+echo "Enter a model ID supported by your provider (Enter for gpt-5.6-luna):"
+read -r MODEL
 MODEL=${MODEL:-"gpt-5.6-luna"}
 
 # Generate the .env file
@@ -35,7 +43,7 @@ echo "Generating .env file..."
 cat <<EOF > .env
 SITE_DOMAIN="$SITE_DOMAIN"
 AI_ROUTER_API_KEY="$API_KEY"
-AI_ROUTER_BASE_URL="https://router.hostinger.com/v1"
+AI_ROUTER_BASE_URL="$AI_ROUTER_BASE_URL"
 AI_ROUTER_MODEL="$MODEL"
 EOF
 chmod 600 .env
