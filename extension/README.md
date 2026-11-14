@@ -1,10 +1,10 @@
 # Persuasion Cartographer Browser Extension
 
-This Manifest V3 extension analyzes text selected on a webpage, or text pasted into the popup, using the existing Persuasion Cartographer API. It reads the browser's plain-text selection; it does not capture anything else.
+This Manifest V3 extension analyses text selected on a webpage, or text pasted into the popup, using the existing Persuasion Cartographer API. It reads the browser's plain-text selection; it does not capture anything else.
 
 ## Compatibility
 This extension is built for **all Chromium-based browsers** (Google Chrome, Microsoft Edge, Brave, Opera, Vivaldi, etc.). 
-*Note: Only explicitly been tested on Microsoft Edge*
+*Note: It has only been explicitly tested on Microsoft Edge.*
 
 ## Load it in your browser
 
@@ -14,7 +14,7 @@ This extension is built for **all Chromium-based browsers** (Google Chrome, Micr
 
 ## Usage
 
-1. Select text on a webpage, right-click, and choose **Analyze Rhetoric**. 
+1. Select text on a webpage, right-click, and choose **Analyse Rhetoric**.
 2. The extension popup opens with the selection prefilled. If your browser does not open it automatically, click the extension icon in your toolbar. 
 3. You can also open the popup directly and paste text there.
 

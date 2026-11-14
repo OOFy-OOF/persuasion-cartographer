@@ -5,7 +5,7 @@ chrome.runtime.onInstalled.addListener(() => {
     chrome.contextMenus.removeAll(() => {
         chrome.contextMenus.create({
             id: CONTEXT_MENU_ID,
-            title: 'Analyze Rhetoric',
+            title: 'Analyse Rhetoric',
             contexts: ['selection']
         });
     });

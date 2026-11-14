@@ -28,7 +28,7 @@ fi
 # Prompt for Model
 echo "Enter the AI Model to use (Enter for default):"
 read MODEL
-MODEL=${MODEL:-"gpt-6.1-sol"}
+MODEL=${MODEL:-"gpt-5.6-luna"}
 
 # Generate the .env file
 echo "Generating .env file..."

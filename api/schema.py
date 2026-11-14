@@ -6,6 +6,7 @@ Technique = Literal[
     "appeal_to_authority_unnamed", "appeal_to_authority_named",
     "urgency", "bandwagon", "scapegoating", "cherry_picking",
     "dehumanization", "ad_hominem", "causal_oversimplification",
+    "coded_language",
 ]
 
 class Span(BaseModel):

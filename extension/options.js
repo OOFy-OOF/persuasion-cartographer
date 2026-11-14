@@ -46,7 +46,7 @@ form.addEventListener('submit', async (event) => {
                 }
             }
         }
-        status.textContent = 'Endpoint saved. You can now analyze selected text.';
+        status.textContent = 'Endpoint saved. You can now analyse selected text.';
     } catch (error) {
         status.textContent = error.message || 'Could not save the endpoint.';
         status.classList.add('error');

@@ -82,14 +82,14 @@ analyzeButton.addEventListener('click', async () => {
     }
 
     analyzeButton.disabled = true;
-    analyzeButton.textContent = 'Analyzing...';
+    analyzeButton.textContent = 'Analysing...';
     status.textContent = '';
     status.classList.remove('error');
     results.classList.add('hidden');
     try {
         const { analyzeEndpoint } = await chrome.storage.local.get('analyzeEndpoint');
         if (!analyzeEndpoint) {
-            status.textContent = 'Configure your deployed API endpoint before analyzing.';
+            status.textContent = 'Configure your deployed API endpoint before analysing.';
             status.classList.add('error');
             await chrome.runtime.openOptionsPage();
             return;
@@ -115,11 +115,11 @@ analyzeButton.addEventListener('click', async () => {
         }
         renderAnalysis(await response.json());
     } catch (error) {
-        status.textContent = `Could not analyze this text. ${error.message || 'Check your connection and try again.'}`;
+        status.textContent = `Could not analyse this text. ${error.message || 'Check your connection and try again.'}`;
         status.classList.add('error');
     } finally {
         analyzeButton.disabled = false;
-        analyzeButton.textContent = 'Analyze text';
+        analyzeButton.textContent = 'Analyse text';
     }
 });
 

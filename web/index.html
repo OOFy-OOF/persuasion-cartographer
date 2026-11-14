@@ -26,7 +26,7 @@
                 <p>Paste a passage below to map its rhetorical techniques and framing.</p>
                 <textarea id="text-input" placeholder="Paste text to see how it persuades..." maxlength="20000"></textarea>
                 <div class="controls">
-                    <button id="analyze-btn">Analyze Text</button>
+                    <button id="analyze-btn">Analyse Text</button>
                 </div>
             </div>
             <section id="results-section" class="results-section hidden">
@@ -46,14 +46,14 @@
             <h2>Live usage counters</h2>
             <p>Counts since this API process started; they reset when it restarts.</p>
             <div id="metrics-display" aria-live="polite">Loading counters...</div>
-            <p class="metrics-note">Abstentions are successful outcomes: the model may abstain when it sees no clear technique, or when satire, neutral reporting, quoted rhetoric, or insufficient context makes labeling misleading. Quotes that fail the exact-substring check are removed. These are operational counts, not accuracy scores.</p>
+            <p class="metrics-note">Abstentions are successful outcomes: the model may abstain when it sees no clear technique, or when satire, neutral reporting, quoted rhetoric, or insufficient context makes labelling misleading. Quotes that fail the exact-substring check are removed. These are operational counts, not accuracy scores.</p>
         </section>
 
         <section class="tab-panel hidden" id="panel-download" role="tabpanel" aria-labelledby="tab-download" tabindex="0">
             <div class="download-placeholder">
                 <span class="eyebrow">Chromium browser extension</span>
                 <h2>Take the cartographer with you</h2>
-                <p>Analyze selected webpage text from the right-click menu, or open the popup and paste text. The extension uses the browser's plain-text selection; it doesn't capture images.</p>
+                <p>Analyse selected webpage text from the right-click menu, or open the popup and paste text. The extension uses the browser's plain-text selection; it doesn't capture images.</p>
                 <a class="download-button" href="/downloads/persuasion-cartographer-extension.zip" download>Download extension (.zip)</a>
                 <div class="setup-guide">
                     <h3>Install and connect</h3>
@@ -62,7 +62,7 @@
                         <li>Open your browser's extensions page (for example, <code>chrome://extensions</code> in Chrome, Edge, or Brave) and turn on <strong>Developer mode</strong>.</li>
                         <li>Choose <strong>Load unpacked</strong> and select the extracted <code>extension</code> folder.</li>
                         <li>Click the gear icon in the top-right of the extension popup to open <strong>Configure API endpoint</strong>. Enter the full HTTPS URL for your deployment, ending in <code>/analyze</code> (for example, <code>https://your-domain.example/analyze</code>), then grant access to that host. HTTP is supported only for localhost development.</li>
-                        <li>Select webpage text and right-click <strong>Analyze Rhetoric</strong>. The popup opens with the selection ready. You can also open the popup directly and paste text.</li>
+                        <li>Select webpage text and right-click <strong>Analyse Rhetoric</strong>. The popup opens with the selection ready. You can also open the popup directly and paste text.</li>
                     </ol>
                     <p>Requires a Chromium-based browser version 127 or later. Tested explicitly on Microsoft Edge. If the browser was open during installation or an update, reload the extension from its extensions page. Browser restrictions may prevent it from working on internal or store pages; paste text into the popup on those pages.</p>
                     <p>Only selected text is sent for analysis, and context-menu selection is held temporarily in browser session storage until the popup reads it.</p>
@@ -74,7 +74,7 @@
             <h2>About this tool's perspective</h2>
             <p>This tool is not neutral. It was built to make persuasion visible, not to decide what is true. No neutrality doesn't mean all claims are equal; it means the choice of which claims to compare is itself a rhetorical act, and this tool says so out loud.</p>
             <p>It does not assess factual accuracy, authorial intent, or moral character. It does not label anything "propaganda." It quotes, names techniques, and explains how they work.</p>
-            <p>Abstention is a valid result. The tool may abstain when it finds no clear technique, when context makes labeling misleading, or when it cannot ground a claim in an exact quote.</p>
+            <p>Abstention is a valid result. The tool may abstain when it finds no clear technique, when context makes labelling misleading, or when it cannot ground a claim in an exact quote.</p>
             <p>Use this map as a starting point for your own reading, not as a conclusion.</p>
         </section>
     </main>

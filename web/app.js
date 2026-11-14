@@ -40,13 +40,13 @@ tabButtons.forEach((tab, index) => {
 document.getElementById('analyze-btn').addEventListener('click', async () => {
     const text = document.getElementById('text-input').value;
     if (!text.trim()) {
-        alert("Please enter some text to analyze.");
+        alert("Please enter some text to analyse.");
         return;
     }
 
     const btn = document.getElementById('analyze-btn');
     btn.disabled = true;
-    btn.textContent = "Analyzing...";
+    btn.textContent = "Analysing...";
     
     document.getElementById('results-section').classList.add('hidden');
 
@@ -66,10 +66,10 @@ document.getElementById('analyze-btn').addEventListener('click', async () => {
         renderResults(data);
         refreshMetrics();
     } catch (e) {
-        alert(`Error analyzing text: ${e.message}`);
+        alert(`Error analysing text: ${e.message}`);
     } finally {
         btn.disabled = false;
-        btn.textContent = "Analyze Text";
+        btn.textContent = "Analyse Text";
     }
 });
 
