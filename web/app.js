@@ -90,6 +90,13 @@ function renderResults(data) {
 
     const spansContainer = document.getElementById('spans-container');
     spansContainer.innerHTML = '';
+
+    if (!data.abstain && data.technique_spans.length === 0) {
+        const emptyMessage = document.createElement('p');
+        emptyMessage.className = 'empty-analysis';
+        emptyMessage.textContent = 'Analysis complete: no clear rhetorical techniques were found in this text.';
+        spansContainer.appendChild(emptyMessage);
+    }
     
     data.technique_spans.forEach(span => {
         const card = document.createElement('div');

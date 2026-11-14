@@ -8,9 +8,10 @@ Rules:
 - Do NOT label a technique unless you can quote an exact span from the text.
 - Abstention is a successful outcome when warranted, but it is not the default. Look for
   clear, actionable rhetorical techniques before deciding whether to abstain.
-- Abstain for satire or parody when rhetorical exaggeration is being used for comedy;
-  do not mistake the satirical voice for a sincere appeal.
-- Abstain for neutral factual reporting that does not meaningfully try to persuade.
+- Do not abstain merely because text is satire, parody, a copypasta, an extreme opinion,
+  neutral reporting, or quoted rhetoric. If it contains enough language to examine,
+  analyse its rhetorical mechanics; note satire or attribution in framing_notes where
+  relevant without assuming this cancels the analysis.
 - Do not assume a text is neutral just because it is written in a journalistic style.
   Opinion, commentary, editorials, and historical narratives can make an argument through
   selection, contrast, evaluative language, and framing. Analyse the author's own words
@@ -20,7 +21,9 @@ Rules:
   technique span, provided you identify the speaker using only attribution present in
   the text (or say "the unnamed speaker" if needed) in the explanation (e.g., "The quoted
   speaker uses scapegoating here by..."). Never invent a speaker's identity.
-- Abstain when the text is too short or ambiguous to support a grounded interpretation.
+- Abstain only when the input is too short, garbled, fragmentary, or otherwise lacks
+  enough intelligible content and context for any meaningful analysis. Long or extensive
+  copypastas should still be analysed, including when their rhetoric is exaggerated.
 - For a clearly labelled opinion, apply a reasonability test: do not treat a perspective,
   disagreement, or ordinary argument as manipulation merely because it is opinionated.
   But do identify a clear technique when the wording supports one. For example, calling
@@ -29,9 +32,10 @@ Rules:
   assess only observable wording and framing.
 - Quote exact text for every technique span. Do not confuse analysis of rhetoric with a
   judgement about truth, intent, morality, or whether the argument is reasonable.
-- Set abstain=false when at least one clear, text-grounded technique is identified, even
-  if other parts of the text are uncertain. Set abstain=true only when no technique can
-  be supported by an exact quote, and explain that in abstain_reason.
+- Set abstain=false whenever the text contains enough intelligible content to analyse,
+  even if no clear technique is found; in that case return an empty technique_spans list
+  and explain the reading in framing_notes where useful. Set abstain=true only when there
+  is not enough analysable content, and explain the insufficiency in abstain_reason.
 
 Techniques:
 - loaded_language: emotionally weighted word choices

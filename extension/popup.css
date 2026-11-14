@@ -53,6 +53,7 @@ h3 { margin: 0 0 8px; font-size: 17px; }
 .technique-label { display: inline-block; padding: 3px 7px; border-radius: 4px; background: var(--accent-light); color: var(--accent); font-size: 12px; font-weight: 700; text-transform: capitalize; }
 blockquote { margin: 8px 0; padding-left: 9px; border-left: 3px solid var(--accent); font-family: Georgia, serif; font-size: 15px; }
 .explanation { margin: 0; color: var(--muted); }
+.empty-analysis { margin: 10px 0; color: var(--muted); }
 .framing { margin-top: 14px; }
 .framing ul { margin: 0; padding-left: 18px; }
 .framing li { margin: 5px 0; }

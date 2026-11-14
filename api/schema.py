@@ -22,5 +22,15 @@ class Analysis(BaseModel):
     technique_spans: list[Span]
     framing_notes: list[FramingNote]
     confidence: Literal["low", "medium", "high"]
-    abstain: bool
-    abstain_reason: Optional[str] = None
+    abstain: bool = Field(
+        ...,
+        description=(
+            "True only when the input is too short, garbled, or otherwise lacks enough "
+            "intelligible content for analysis. Do not abstain merely because text is "
+            "satirical, opinionated, a copypasta, neutral, or contains no clear technique."
+        ),
+    )
+    abstain_reason: Optional[str] = Field(
+        None,
+        description="If abstaining, explain why there is not enough analysable content; otherwise null.",
+    )

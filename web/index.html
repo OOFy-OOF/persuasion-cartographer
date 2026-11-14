@@ -46,7 +46,7 @@
             <h2>Live usage counters</h2>
             <p>Counts since this API process started; they reset when it restarts.</p>
             <div id="metrics-display" aria-live="polite">Loading counters...</div>
-            <p class="metrics-note">Abstentions are successful outcomes: the model may abstain when it sees no clear technique, or when satire, neutral reporting, quoted rhetoric, or insufficient context makes labelling misleading. Quotes that fail the exact-substring check are removed. These are operational counts, not accuracy scores.</p>
+            <p class="metrics-note">Abstentions are counted only when the input is too short, garbled, or otherwise lacks enough intelligible content for analysis. Extensive texts—including satire, copypastas, neutral reporting, and quoted rhetoric—are still analysed; they may simply produce no technique spans. Quotes that fail the exact-substring check are removed. These are operational counts, not accuracy scores.</p>
         </section>
 
         <section class="tab-panel hidden" id="panel-download" role="tabpanel" aria-labelledby="tab-download" tabindex="0">
@@ -74,7 +74,7 @@
             <h2>About this tool's perspective</h2>
             <p>This tool is not neutral. It was built to make persuasion visible, not to decide what is true. No neutrality doesn't mean all claims are equal; it means the choice of which claims to compare is itself a rhetorical act, and this tool says so out loud.</p>
             <p>It does not assess factual accuracy, authorial intent, or moral character. It does not label anything "propaganda." It quotes, names techniques, and explains how they work.</p>
-            <p>Abstention is a valid result. The tool may abstain when it finds no clear technique, when context makes labelling misleading, or when it cannot ground a claim in an exact quote.</p>
+            <p>Abstention is reserved for text that is too short, garbled, or otherwise lacks enough intelligible content to analyse. Satire, copypastas, strong opinions, neutral reporting, and quoted rhetoric are still analysed when there is enough text; the tool may return no technique spans if no clear technique is present.</p>
             <p>Use this map as a starting point for your own reading, not as a conclusion.</p>
         </section>
     </main>

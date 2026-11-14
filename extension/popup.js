@@ -50,6 +50,9 @@ function renderAnalysis(data) {
 
     const spans = document.getElementById('spans');
     spans.replaceChildren();
+    if (!data.abstain && (data.technique_spans || []).length === 0) {
+        addText(spans, 'p', 'empty-analysis', 'Analysis complete: no clear rhetorical techniques were found in this text.');
+    }
     for (const span of data.technique_spans || []) {
         const card = addText(spans, 'article', 'technique-card', '');
         addText(card, 'span', 'technique-label', span.technique.replace(/_/g, ' '));

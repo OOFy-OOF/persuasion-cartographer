@@ -136,6 +136,7 @@ mark {
 }
 .explanation { color: var(--muted); font-size: 0.95rem; margin: 0; }
 .disclaimer { margin-top: 2rem; font-size: 0.875rem; color: var(--muted); text-align: center; font-style: italic; }
+.empty-analysis { color: var(--muted); padding: 0.8rem 0; }
 #abstain-message {
     background: var(--bg);
     border: 1px solid var(--border);

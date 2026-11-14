@@ -22,6 +22,8 @@ This extension requires a Chromium-based browser (version 127 or later). If your
 
 On first use, click the gear icon in the top-right of the extension popup to open **Configure API endpoint** settings. Enter your deployment's full HTTPS analysis URL, such as `https://your-domain.example/analyze`. The extension asks Chrome for access to only that host when you save. For local development, HTTP is allowed only on localhost. If you move the API, update the endpoint in settings; the previous host permission is removed when possible.
 
+The tool abstains only when text is too short, garbled, or otherwise lacks enough intelligible content to analyse. Longer satire, copypastas, opinionated writing, neutral reporting, and quotations are still analysed; they may simply produce no technique spans.
+
 ## Privacy & Limitations
 
 Browsers restrict script injection on some internal and store pages; simply paste text into the extension manually on those pages. 

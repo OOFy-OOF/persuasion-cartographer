@@ -52,10 +52,8 @@ def analyze(text: str) -> Analysis:
         # abstain flag consistent with the spans that survived exact-quote validation.
         result.abstain = False
         result.abstain_reason = None
-    else:
-        result.abstain = True
-        if not result.abstain_reason:
-            result.abstain_reason = "No rhetorical technique could be supported by an exact quote from the text."
+    # An empty span list can still be a completed analysis (for example, neutral prose).
+    # Preserve the model's abstention decision instead of treating no findings as abstention.
 
     with _METRICS_LOCK:
         _METRICS["analyses"] += 1
