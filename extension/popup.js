@@ -7,6 +7,13 @@ const results = document.getElementById('results');
 
 async function loadSelection() {
     try {
+        const { pendingSelection } = await chrome.storage.session.get('pendingSelection');
+        if (pendingSelection?.trim()) {
+            textInput.value = pendingSelection.trim();
+            await chrome.storage.session.remove('pendingSelection');
+            return;
+        }
+
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
         if (!tab?.id || !/^https?:/.test(tab.url || '')) return;
         const [selection] = await chrome.scripting.executeScript({
