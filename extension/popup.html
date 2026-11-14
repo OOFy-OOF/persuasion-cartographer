@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persuasion Cartographer</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <header>
+        <p class="eyebrow">A rhetorical microscope</p>
+        <h1>Persuasion Cartographer</h1>
+        <p class="intro">Explore how a passage persuades, without judging whether it is true.</p>
+    </header>
+
+    <main>
+        <label for="text-input">Text to map</label>
+        <textarea id="text-input" maxlength="20000" placeholder="Select text on a page, or paste it here..."></textarea>
+        <p class="hint">Selecting text on a page fills this box when you open the extension.</p>
+        <button id="analyze-button" type="button">Analyze text</button>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+
+        <section id="results" class="results hidden" aria-labelledby="results-title">
+            <div class="results-heading">
+                <h2 id="results-title">Analysis</h2>
+                <span id="confidence" class="confidence"></span>
+            </div>
+            <p id="abstain" class="abstain hidden"></p>
+            <div id="spans"></div>
+            <section id="framing-section" class="framing hidden">
+                <h3>Framing notes</h3>
+                <ul id="framing"></ul>
+            </section>
+            <p class="disclaimer">This map does not assess truth, intent, or morality.</p>
+        </section>
+    </main>
+    <script src="popup.js"></script>
+</body>
+</html>

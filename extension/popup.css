@@ -1,0 +1,54 @@
+:root {
+    color-scheme: light;
+    --bg: #f9f9f8;
+    --paper: #fff;
+    --text: #1a1a1a;
+    --muted: #666;
+    --border: #e0e0e0;
+    --accent: #2b6cb0;
+    --accent-light: #ebf4ff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    width: 380px;
+    max-height: 600px;
+    overflow-y: auto;
+    margin: 0;
+    padding: 18px;
+    background: var(--bg);
+    color: var(--text);
+    font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+header { padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+h1, h2, h3 { font-family: Georgia, Cambria, "Times New Roman", serif; font-weight: normal; }
+h1 { margin: 0; font-size: 23px; line-height: 1.2; }
+.eyebrow { margin: 0 0 5px; color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.intro { margin: 8px 0 0; color: var(--muted); }
+main { padding-top: 14px; }
+label { display: block; margin-bottom: 6px; font-weight: 650; }
+textarea { display: block; width: 100%; min-height: 125px; resize: vertical; padding: 10px; border: 1px solid var(--border); border-radius: 7px; background: var(--paper); color: var(--text); font: inherit; }
+textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.hint { margin: 5px 0 10px; color: var(--muted); font-size: 12px; }
+button { width: 100%; padding: 10px 14px; border: 0; border-radius: 6px; background: var(--text); color: var(--paper); font: inherit; font-weight: 600; cursor: pointer; }
+button:hover { background: #333; }
+button:disabled { background: var(--muted); cursor: wait; }
+.status { min-height: 20px; margin: 8px 0; color: var(--muted); font-size: 12px; }
+.status.error { color: #a12622; }
+.results { padding-top: 10px; border-top: 1px solid var(--border); }
+.hidden { display: none !important; }
+.results-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+h2 { margin: 0 0 10px; font-size: 20px; }
+h3 { margin: 0 0 8px; font-size: 17px; }
+.confidence { color: var(--muted); font-size: 12px; }
+.abstain { padding: 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--paper); }
+.technique-card { padding: 10px 0; border-bottom: 1px solid var(--border); }
+.technique-label { display: inline-block; padding: 3px 7px; border-radius: 4px; background: var(--accent-light); color: var(--accent); font-size: 12px; font-weight: 700; text-transform: capitalize; }
+blockquote { margin: 8px 0; padding-left: 9px; border-left: 3px solid var(--accent); font-family: Georgia, serif; font-size: 15px; }
+.explanation { margin: 0; color: var(--muted); }
+.framing { margin-top: 14px; }
+.framing ul { margin: 0; padding-left: 18px; }
+.framing li { margin: 5px 0; }
+.disclaimer { margin: 14px 0 0; color: var(--muted); font-size: 11px; font-style: italic; text-align: center; }
