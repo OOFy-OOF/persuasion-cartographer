@@ -13,8 +13,8 @@ function escapeHTML(str) {
 
 document.getElementById('analyze-btn').addEventListener('click', async () => {
     const text = document.getElementById('text-input').value;
-    if (text.length < 40) {
-        alert("Please enter at least 40 characters.");
+    if (!text.trim()) {
+        alert("Please enter some text to analyze.");
         return;
     }
 
@@ -35,6 +35,7 @@ document.getElementById('analyze-btn').addEventListener('click', async () => {
         const data = await res.json();
         
         renderResults(data);
+        refreshMetrics();
     } catch (e) {
         alert("Error analyzing text. Is the server running?");
     } finally {
@@ -93,7 +94,7 @@ async function refreshMetrics() {
         const data = await res.json();
         display.innerHTML = `
             <div class="metric"><strong>${data.analyses}</strong><span>analyses</span></div>
-            <div class="metric"><strong>${data.abstentions}</strong><span>abstentions</span></div>
+            <div class="metric"><strong>${data.abstentions}</strong><span>successful abstentions</span></div>
             <div class="metric"><strong>${data.quote_grounding_drops}</strong><span>unverifiable quotes removed</span></div>
         `;
     } catch (error) {

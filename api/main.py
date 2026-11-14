@@ -15,8 +15,8 @@ class AnalyzeRequest(BaseModel):
 
 @app.post("/analyze", response_model=Analysis)
 def analyze_endpoint(req: AnalyzeRequest):
-    if len(req.text) < 40 or len(req.text) > 20000:
-        raise HTTPException(status_code=400, detail="Text must be between 40 and 20000 characters.")
+    if len(req.text) > 20000:
+        raise HTTPException(status_code=400, detail="Text must be no more than 20000 characters.")
     return analyze(req.text)
 
 @app.get("/health")
