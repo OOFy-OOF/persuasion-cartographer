@@ -16,8 +16,8 @@
         <nav class="tabs" role="tablist" aria-label="Persuasion Cartographer sections">
             <button class="tab-button" id="tab-prompt" type="button" role="tab" aria-selected="true" aria-controls="panel-prompt">Prompt</button>
             <button class="tab-button" id="tab-usage" type="button" role="tab" aria-selected="false" aria-controls="panel-usage" tabindex="-1">Live usage</button>
-            <button class="tab-button" id="tab-about" type="button" role="tab" aria-selected="false" aria-controls="panel-about" tabindex="-1">About this tool</button>
             <button class="tab-button" id="tab-download" type="button" role="tab" aria-selected="false" aria-controls="panel-download" tabindex="-1">Download</button>
+            <button class="tab-button" id="tab-about" type="button" role="tab" aria-selected="false" aria-controls="panel-about" tabindex="-1">About this tool</button>
         </nav>
 
         <section class="tab-panel" id="panel-prompt" role="tabpanel" aria-labelledby="tab-prompt" tabindex="0">
@@ -49,32 +49,33 @@
             <p class="metrics-note">Abstentions are successful outcomes: the model may abstain when it sees no clear technique, or when satire, neutral reporting, quoted rhetoric, or insufficient context makes labeling misleading. Quotes that fail the exact-substring check are removed. These are operational counts, not accuracy scores.</p>
         </section>
 
+        <section class="tab-panel hidden" id="panel-download" role="tabpanel" aria-labelledby="tab-download" tabindex="0">
+            <div class="download-placeholder">
+                <span class="eyebrow">Chromium browser extension</span>
+                <h2>Take the cartographer with you</h2>
+                <p>Analyze selected webpage text from the right-click menu, or open the popup and paste text. The extension uses the browser's plain-text selection; it doesn't capture images.</p>
+                <a class="download-button" href="/downloads/persuasion-cartographer-extension.zip" download>Download extension (.zip)</a>
+                <div class="setup-guide">
+                    <h3>Install and connect</h3>
+                    <ol>
+                        <li>Download and extract the ZIP file to a folder you can keep.</li>
+                        <li>Open your browser's extensions page (for example, <code>chrome://extensions</code> in Chrome, Edge, or Brave) and turn on <strong>Developer mode</strong>.</li>
+                        <li>Choose <strong>Load unpacked</strong> and select the extracted <code>extension</code> folder.</li>
+                        <li>Click the gear icon in the top-right of the extension popup to open <strong>Configure API endpoint</strong>. Enter the full HTTPS URL for your deployment, ending in <code>/analyze</code> (for example, <code>https://your-domain.example/analyze</code>), then grant access to that host. HTTP is supported only for localhost development.</li>
+                        <li>Select webpage text and right-click <strong>Analyze Rhetoric</strong>. The popup opens with the selection ready. You can also open the popup directly and paste text.</li>
+                    </ol>
+                    <p>Requires a Chromium-based browser version 127 or later. Tested explicitly on Microsoft Edge. If the browser was open during installation or an update, reload the extension from its extensions page. Browser restrictions may prevent it from working on internal or store pages; paste text into the popup on those pages.</p>
+                    <p>Only selected text is sent for analysis, and context-menu selection is held temporarily in browser session storage until the popup reads it.</p>
+                </div>
+            </div>
+        </section>
+
         <section class="tab-panel hidden" id="panel-about" role="tabpanel" aria-labelledby="tab-about" tabindex="0">
             <h2>About this tool's perspective</h2>
             <p>This tool is not neutral. It was built to make persuasion visible, not to decide what is true. No neutrality doesn't mean all claims are equal; it means the choice of which claims to compare is itself a rhetorical act, and this tool says so out loud.</p>
             <p>It does not assess factual accuracy, authorial intent, or moral character. It does not label anything "propaganda." It quotes, names techniques, and explains how they work.</p>
             <p>Abstention is a valid result. The tool may abstain when it finds no clear technique, when context makes labeling misleading, or when it cannot ground a claim in an exact quote.</p>
             <p>Use this map as a starting point for your own reading, not as a conclusion.</p>
-        </section>
-
-        <section class="tab-panel hidden" id="panel-download" role="tabpanel" aria-labelledby="tab-download" tabindex="0">
-            <div class="download-placeholder">
-                <span class="eyebrow">Chrome extension</span>
-                <h2>Take the cartographer with you</h2>
-                <p>Select text on a webpage and choose <strong>Analyze Rhetoric</strong> from the right-click menu. The extension popup opens with your selection ready to analyze.</p>
-                <a class="download-button" href="/downloads/persuasion-cartographer-extension.zip" download>Download extension (.zip)</a>
-                <div class="setup-guide">
-                    <h3>Set it up in Chrome</h3>
-                    <ol>
-                        <li>Download and extract the ZIP file to a folder you can keep.</li>
-                        <li>Open <code>chrome://extensions</code> in Chrome and turn on <strong>Developer mode</strong>.</li>
-                        <li>Choose <strong>Load unpacked</strong> and select the extracted <code>extension</code> folder.</li>
-                        <li>Open the extension's settings and enter your deployment's analysis endpoint, such as <code>https://your-domain.example/analyze</code>. Grant the requested host permission.</li>
-                        <li>Select text on a webpage, right-click it, and choose <strong>Analyze Rhetoric</strong>. The popup opens with the selection prefilled.</li>
-                    </ol>
-                    <p>Requires Chrome 127 or later. If you update the extension, return to <code>chrome://extensions</code> and press its reload icon. Chrome blocks extensions on some internal pages, such as the Chrome Web Store.</p>
-                </div>
-            </div>
         </section>
     </main>
 

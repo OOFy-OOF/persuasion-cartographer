@@ -1,6 +1,6 @@
 # Persuasion Cartographer Browser Extension
 
-This Manifest V3 extension analyzes text selected on a webpage, or text pasted into the popup, using the existing Persuasion Cartographer API.
+This Manifest V3 extension analyzes text selected on a webpage, or text pasted into the popup, using the existing Persuasion Cartographer API. It reads the browser's plain-text selection; it does not capture anything else.
 
 ## Compatibility
 This extension is built for **all Chromium-based browsers** (Google Chrome, Microsoft Edge, Brave, Opera, Vivaldi, etc.). 
@@ -20,7 +20,7 @@ This extension is built for **all Chromium-based browsers** (Google Chrome, Micr
 
 This extension requires a Chromium-based browser (version 127 or later). If your browser was already open when you installed or updated the extension, reload it from the extension management page so the context-menu item is registered.
 
-On first use, open the extension's **Configure API endpoint** settings and enter your deployment's full HTTPS analysis URL, such as `https://your-domain.example/analyze`. The extension asks Chrome for access to only that host when you save. For local development, HTTP is allowed only on localhost. If you move the API, update the endpoint in settings; the previous host permission is removed when possible.
+On first use, click the gear icon in the top-right of the extension popup to open **Configure API endpoint** settings. Enter your deployment's full HTTPS analysis URL, such as `https://your-domain.example/analyze`. The extension asks Chrome for access to only that host when you save. For local development, HTTP is allowed only on localhost. If you move the API, update the endpoint in settings; the previous host permission is removed when possible.
 
 ## Privacy & Limitations
 
