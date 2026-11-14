@@ -13,38 +13,56 @@
     </header>
 
     <main>
-        <section class="input-section">
-            <textarea id="text-input" placeholder="Paste text to see how it persuades..." maxlength="20000"></textarea>
-            <div class="controls">
-                <button id="analyze-btn">Analyze Text</button>
+        <nav class="tabs" role="tablist" aria-label="Persuasion Cartographer sections">
+            <button class="tab-button" id="tab-prompt" type="button" role="tab" aria-selected="true" aria-controls="panel-prompt">Prompt</button>
+            <button class="tab-button" id="tab-usage" type="button" role="tab" aria-selected="false" aria-controls="panel-usage" tabindex="-1">Live usage</button>
+            <button class="tab-button" id="tab-about" type="button" role="tab" aria-selected="false" aria-controls="panel-about" tabindex="-1">About this tool</button>
+            <button class="tab-button" id="tab-download" type="button" role="tab" aria-selected="false" aria-controls="panel-download" tabindex="-1">Download</button>
+        </nav>
+
+        <section class="tab-panel" id="panel-prompt" role="tabpanel" aria-labelledby="tab-prompt" tabindex="0">
+            <div class="input-section">
+                <h2>Explore how a text persuades</h2>
+                <p>Paste a passage below to map its rhetorical techniques and framing.</p>
+                <textarea id="text-input" placeholder="Paste text to see how it persuades..." maxlength="20000"></textarea>
+                <div class="controls">
+                    <button id="analyze-btn">Analyze Text</button>
+                </div>
             </div>
+            <section id="results-section" class="results-section hidden">
+                <h2>Analysis</h2>
+                <div id="confidence-badge"></div>
+                <div id="abstain-message" class="hidden"></div>
+                <div id="spans-container"></div>
+                <div id="framing-container">
+                    <h3>Framing Notes</h3>
+                    <ul id="framing-list"></ul>
+                </div>
+                <p class="disclaimer">What this doesn't tell you: truth, intent, or morality.</p>
+            </section>
         </section>
 
-        <section id="results-section" class="hidden">
-            <h2>Analysis</h2>
-            <div id="confidence-badge"></div>
-            <div id="abstain-message" class="hidden"></div>
-            <div id="spans-container"></div>
-            <div id="framing-container">
-                <h3>Framing Notes</h3>
-                <ul id="framing-list"></ul>
-            </div>
-            <p class="disclaimer">What this doesn't tell you: truth, intent, or morality.</p>
-        </section>
-
-        <section id="metrics-section">
+        <section class="tab-panel hidden" id="panel-usage" role="tabpanel" aria-labelledby="tab-usage" tabindex="0">
             <h2>Live usage counters</h2>
             <p>Counts since this API process started; they reset when it restarts.</p>
             <div id="metrics-display" aria-live="polite">Loading counters...</div>
             <p class="metrics-note">Abstentions are successful outcomes: the model may abstain when it sees no clear technique, or when satire, neutral reporting, quoted rhetoric, or insufficient context makes labeling misleading. Quotes that fail the exact-substring check are removed. These are operational counts, not accuracy scores.</p>
         </section>
 
-        <section class="about-section">
+        <section class="tab-panel hidden" id="panel-about" role="tabpanel" aria-labelledby="tab-about" tabindex="0">
             <h2>About this tool's perspective</h2>
             <p>This tool is not neutral. It was built to make persuasion visible, not to decide what is true. No neutrality doesn't mean all claims are equal; it means the choice of which claims to compare is itself a rhetorical act, and this tool says so out loud.</p>
             <p>It does not assess factual accuracy, authorial intent, or moral character. It does not label anything "propaganda." It quotes, names techniques, and explains how they work.</p>
             <p>Abstention is a valid and common result. When the tool cannot ground a claim in an exact quote, it says so.</p>
             <p>Use this map as a starting point for your own reading, not as a conclusion.</p>
+        </section>
+
+        <section class="tab-panel hidden" id="panel-download" role="tabpanel" aria-labelledby="tab-download" tabindex="0">
+            <div class="download-placeholder">
+                <span class="eyebrow">Coming later</span>
+                <h2>Take the cartographer with you</h2>
+                <p>A Chrome extension is planned so you can explore the rhetoric of text while browsing. There is nothing to download just yet.</p>
+            </div>
         </section>
     </main>
 

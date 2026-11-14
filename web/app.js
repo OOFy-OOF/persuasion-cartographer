@@ -11,6 +11,32 @@ function escapeHTML(str) {
     );
 }
 
+const tabButtons = [...document.querySelectorAll('[role="tab"]')];
+
+function activateTab(tab, moveFocus = false) {
+    tabButtons.forEach(button => {
+        const selected = button === tab;
+        button.setAttribute('aria-selected', String(selected));
+        button.tabIndex = selected ? 0 : -1;
+        document.getElementById(button.getAttribute('aria-controls')).classList.toggle('hidden', !selected);
+    });
+    if (moveFocus) tab.focus();
+}
+
+tabButtons.forEach((tab, index) => {
+    tab.addEventListener('click', () => activateTab(tab));
+    tab.addEventListener('keydown', event => {
+        let nextIndex;
+        if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabButtons.length;
+        else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabButtons.length) % tabButtons.length;
+        else if (event.key === 'Home') nextIndex = 0;
+        else if (event.key === 'End') nextIndex = tabButtons.length - 1;
+        else return;
+        event.preventDefault();
+        activateTab(tabButtons[nextIndex], true);
+    });
+});
+
 document.getElementById('analyze-btn').addEventListener('click', async () => {
     const text = document.getElementById('text-input').value;
     if (!text.trim()) {

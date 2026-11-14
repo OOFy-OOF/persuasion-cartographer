@@ -63,6 +63,43 @@ section {
     padding: 2rem;
     margin-bottom: 2rem;
 }
+.tabs {
+    display: flex;
+    gap: 0.35rem;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+}
+.tab-button {
+    flex: 0 0 auto;
+    background: transparent;
+    color: var(--muted);
+    border: 0;
+    border-bottom: 3px solid transparent;
+    border-radius: 6px 6px 0 0;
+    padding: 0.8rem 1rem;
+}
+.tab-button:hover { background: var(--accent-light); color: var(--accent); }
+.tab-button[aria-selected="true"] {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    font-weight: 600;
+}
+.tab-panel { min-height: 260px; }
+.tab-panel[role="tabpanel"]:focus { outline: 2px solid var(--accent); outline-offset: 3px; }
+.input-section { padding: 0; margin: 0; border: 0; }
+.input-section h2 { margin-top: 0; }
+.results-section { margin: 2rem 0 0; }
+.download-placeholder {
+    max-width: 560px;
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: center;
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+}
+.eyebrow { color: var(--accent); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 .technique-card {
     margin-bottom: 1.5rem;
     padding-bottom: 1.5rem;
