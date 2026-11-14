@@ -48,3 +48,7 @@ Download the packaged extension from the website's **Download** tab, extract it,
 ## Operational notes
 
 Usage, abstention, quote-drop, and technique-feedback counts are held in API process memory. They reset when the API process restarts and are not accuracy or quality scores. The API rate-limits analysis and feedback requests per client.
+
+## AI use and acknowledgement
+
+OpenAI Codex was used to assist with code generation tasks. The analysis feature also relies on the model configured by `AI_ROUTER_MODEL`. Its interpretations may be wrong; exact-quote validation only guarantees that a quote appears in the input, not that the interpretation is correct.
