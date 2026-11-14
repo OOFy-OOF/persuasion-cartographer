@@ -21,9 +21,15 @@ Rules:
   technique span, provided you identify the speaker using only attribution present in
   the text (or say "the unnamed speaker" if needed) in the explanation (e.g., "The quoted
   speaker uses scapegoating here by..."). Never invent a speaker's identity.
-- Abstain only when the input is too short, garbled, fragmentary, or otherwise lacks
-  enough intelligible content and context for any meaningful analysis. Long or extensive
-  copypastas should still be analysed, including when their rhetoric is exaggerated.
+- Judge sufficiency by substance, not grammar or word count alone. A short input can be
+  analysed when it contains a clear claim or rhetorical move (for example, "Support this
+  or you hate your country" presents a false dilemma). Abstain when the input is merely
+  grammatical but gives no substantive claim, subject, argument, or rhetorical content
+  to examine (for example, "This is a sentence."). A fragment can still be analysable if
+  its rhetorical function is clear; do not abstain solely because it is short.
+- Abstain when text is garbled, fragmentary, or otherwise lacks enough intelligible,
+  substantive content for any meaningful analysis. Long or extensive copypastas should
+  still be analysed, including when their rhetoric is exaggerated.
 - For a clearly labelled opinion, apply a reasonability test: do not treat a perspective,
   disagreement, or ordinary argument as manipulation merely because it is opinionated.
   But do identify a clear technique when the wording supports one. For example, calling
@@ -32,10 +38,12 @@ Rules:
   assess only observable wording and framing.
 - Quote exact text for every technique span. Do not confuse analysis of rhetoric with a
   judgement about truth, intent, morality, or whether the argument is reasonable.
-- Set abstain=false whenever the text contains enough intelligible content to analyse,
-  even if no clear technique is found; in that case return an empty technique_spans list
-  and explain the reading in framing_notes where useful. Set abstain=true only when there
-  is not enough analysable content, and explain the insufficiency in abstain_reason.
+- Set abstain=false when the text contains enough intelligible, substantive content to
+  examine, even if no clear technique is found; in that case return an empty
+  technique_spans list and explain the reading in framing_notes where useful. Set
+  abstain=true when there is no meaningful claim, rhetorical content, or context to
+  examine, and explain the insufficiency in abstain_reason. Do not use abstention as a
+  substitute for returning an empty technique_spans list on analysable text.
 
 Techniques:
 - loaded_language: emotionally weighted word choices

@@ -22,7 +22,7 @@ This extension requires a Chromium-based browser (version 127 or later). If your
 
 On first use, click the gear icon in the top-right of the extension popup to open **Configure API endpoint** settings. Enter your deployment's full HTTPS analysis URL, such as `https://your-domain.example/analyze`. The extension asks Chrome for access to only that host when you save. For local development, HTTP is allowed only on localhost. If you move the API, update the endpoint in settings; the previous host permission is removed when possible.
 
-The tool abstains only when text is too short, garbled, or otherwise lacks enough intelligible content to analyse. Longer satire, copypastas, opinionated writing, neutral reporting, and quotations are still analysed; they may simply produce no technique spans.
+Abstention is based on substance, not length alone. A generic line such as “This is a sentence” has no claim or rhetorical content to examine, while a short but clear rhetorical move can still be analysed. Longer satire, copypastas, opinionated writing, neutral reporting, and quotations are still analysed; they may simply produce no technique spans.
 
 Use **Flag inaccurate** on a technique card to submit feedback about that label. These flags are user reports, not verified errors, and the counters reset when the API process restarts.
 
