@@ -31,7 +31,7 @@ Keep `.env` private. It contains the API key and is excluded from version contro
 
 ## Run the API locally
 
-The API uses Python 3.12 (as specified by its Dockerfile). Create and activate a virtual environment, install `api/requirements.txt`, and provide `AI_ROUTER_API_KEY`, `AI_ROUTER_BASE_URL`, and `AI_ROUTER_MODEL`. From the `api/` directory, start the development server with:
+The API uses Python 3.12. Create and activate a virtual environment, install `api/requirements.txt`, and provide `AI_ROUTER_API_KEY`, `AI_ROUTER_BASE_URL`, and `AI_ROUTER_MODEL`. From the `api/` directory, start the development server with:
 
 ```sh
 uvicorn main:app --reload --port 8000

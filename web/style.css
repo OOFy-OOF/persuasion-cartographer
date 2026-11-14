@@ -43,6 +43,15 @@ textarea {
     resize: vertical;
     box-sizing: border-box;
 }
+.character-count {
+    display: block;
+    margin-top: 0.3rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+.character-count.at-limit { color: #a12622; }
 .controls { margin-top: 1rem; text-align: right; }
 button {
     background: var(--text);

@@ -12,6 +12,18 @@ function escapeHTML(str) {
 }
 
 const tabButtons = [...document.querySelectorAll('[role="tab"]')];
+const textInput = document.getElementById('text-input');
+const characterCount = document.getElementById('character-count');
+
+function updateCharacterCount() {
+    const used = textInput.value.length;
+    const limit = textInput.maxLength;
+    characterCount.textContent = `${used}/${limit} characters`;
+    characterCount.classList.toggle('at-limit', used === limit);
+}
+
+textInput.addEventListener('input', updateCharacterCount);
+updateCharacterCount();
 
 function activateTab(tab, moveFocus = false) {
     tabButtons.forEach(button => {

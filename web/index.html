@@ -24,7 +24,8 @@
             <div class="input-section">
                 <h2>Explore how a text persuades</h2>
                 <p>Paste a passage below to map its rhetorical techniques and framing.</p>
-                <textarea id="text-input" placeholder="Paste text to see how it persuades..." maxlength="20000"></textarea>
+                <textarea id="text-input" placeholder="Paste text to see how it persuades..." maxlength="20000" aria-describedby="character-count"></textarea>
+                <output id="character-count" class="character-count" for="text-input">0/20000 characters</output>
                 <div class="controls">
                     <button id="analyze-btn">Analyse Text</button>
                 </div>
@@ -84,6 +85,6 @@
         </section>
     </main>
 
-    <script src="app.js?v=6"></script>
+    <script src="app.js?v=7"></script>
 </body>
 </html>
