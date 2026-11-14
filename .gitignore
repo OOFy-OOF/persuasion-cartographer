@@ -1,0 +1,19 @@
+@'
+# Python
+__pycache__/
+__pycache___ignore/
+*.pyc
+venv/
+venv_ignore/
+.venv/
+
+# Environment variables (DO NOT COMMIT)
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Reference materials
+sources/
+'@ | Set-Content -Path .gitignore

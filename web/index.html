@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persuasion Cartographer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Persuasion Cartographer</h1>
+        <p class="tagline">A rhetorical microscope, not a propaganda detector.</p>
+    </header>
+
+    <main>
+        <section class="input-section">
+            <textarea id="text-input" placeholder="Paste text to see how it persuades..." maxlength="20000"></textarea>
+            <div class="controls">
+                <button id="analyze-btn">Analyze Text</button>
+            </div>
+        </section>
+
+        <section id="results-section" class="hidden">
+            <h2>Analysis</h2>
+            <div id="confidence-badge"></div>
+            <div id="abstain-message" class="hidden"></div>
+            <div id="spans-container"></div>
+            <div id="framing-container">
+                <h3>Framing Notes</h3>
+                <ul id="framing-list"></ul>
+            </div>
+            <p class="disclaimer">What this doesn't tell you: truth, intent, or morality.</p>
+        </section>
+
+        <section id="metrics-section">
+            <h2>How honest is this tool?</h2>
+            <p>Metrics from our hand-labeled evaluation set.</p>
+            <div id="metrics-display">Loading metrics...</div>
+        </section>
+
+        <section class="about-section">
+            <h2>About this tool's perspective</h2>
+            <p>This tool is not neutral. It was built to make persuasion visible, not to decide what is true. No neutrality doesn't mean all claims are equal — it means the choice of which claims to compare is itself a rhetorical act, and this tool says so out loud.</p>
+            <p>It does not assess factual accuracy, authorial intent, or moral character. It does not label anything "propaganda." It quotes, names techniques, and explains how they work.</p>
+            <p>Abstention is a valid and common result. When the tool cannot ground a claim in an exact quote, it says so.</p>
+            <p>Use this map as a starting point for your own reading, not as a conclusion.</p>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

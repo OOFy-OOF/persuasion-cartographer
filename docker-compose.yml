@@ -1,0 +1,18 @@
+services:
+  api:
+    build: ./api
+    env_file: .env
+    restart: unless-stopped
+  caddy:
+    image: caddy:2
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./web:/srv/web:ro
+      - caddy_data:/data
+    depends_on:
+      - api
+volumes:
+  caddy_data:
