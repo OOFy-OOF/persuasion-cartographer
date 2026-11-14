@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "minimum_chrome_version": "127",
   "name": "Persuasion Cartographer",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Map rhetorical techniques in selected text while you browse.",
   "permissions": ["activeTab", "scripting", "contextMenus", "storage"],
   "optional_host_permissions": ["https://*/*", "http://localhost/*", "http://127.0.0.1/*"],

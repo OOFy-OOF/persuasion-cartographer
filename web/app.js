@@ -101,15 +101,28 @@ function renderResults(data) {
     data.technique_spans.forEach(span => {
         const card = document.createElement('div');
         card.className = 'technique-card';
+
+        const heading = document.createElement('div');
+        heading.className = 'technique-heading';
+        const label = document.createElement('span');
+        label.className = 'technique-label';
+        label.textContent = span.technique.replace(/_/g, ' ');
+        const flagButton = document.createElement('button');
+        flagButton.className = 'flag-button';
+        flagButton.type = 'button';
+        flagButton.textContent = 'Flag inaccurate';
+        flagButton.setAttribute('aria-label', `Flag ${label.textContent} as inaccurate`);
+        flagButton.addEventListener('click', () => submitTechniqueFlag(span.technique, flagButton));
+        heading.append(label, flagButton);
         
         const safeQuote = escapeHTML(span.quote);
         const safeExplanation = escapeHTML(span.explanation);
         
         card.innerHTML = `
-            <span class="technique-label">${span.technique.replace(/_/g, ' ')}</span>
             <blockquote><mark>${safeQuote}</mark></blockquote>
             <p class="explanation">${safeExplanation}</p>
         `;
+        card.prepend(heading);
         spansContainer.appendChild(card);
     });
 
@@ -120,6 +133,31 @@ function renderResults(data) {
         li.innerHTML = `<strong>${note.kind.replace(/_/g, ' ')}:</strong> ${escapeHTML(note.note)}`;
         framingList.appendChild(li);
     });
+}
+
+async function submitTechniqueFlag(technique, button) {
+    button.disabled = true;
+    button.textContent = 'Sending...';
+    button.classList.remove('flag-error');
+    try {
+        const response = await fetch('/feedback', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ technique })
+        });
+        if (!response.ok) {
+            const error = await response.json().catch(() => ({}));
+            throw new Error(error.detail || `Feedback failed (${response.status}).`);
+        }
+        button.textContent = 'Flagged ✓';
+        button.classList.add('flagged');
+        refreshMetrics();
+    } catch (error) {
+        button.disabled = false;
+        button.textContent = 'Retry flag';
+        button.title = error.message || 'Could not submit feedback. Please try again.';
+        button.classList.add('flag-error');
+    }
 }
 
 async function refreshMetrics() {
@@ -133,6 +171,23 @@ async function refreshMetrics() {
             <div class="metric"><strong>${data.abstentions}</strong><span>successful abstentions</span></div>
             <div class="metric"><strong>${data.quote_grounding_drops}</strong><span>unverifiable quotes removed</span></div>
         `;
+        const ranking = document.getElementById('misattribution-ranking');
+        const topFlagged = Object.entries(data.misattributions || {})
+            .filter(([, count]) => count > 0)
+            .sort((left, right) => right[1] - left[1])
+            .slice(0, 3);
+        ranking.replaceChildren();
+        if (topFlagged.length === 0) {
+            const item = document.createElement('li');
+            item.textContent = 'No technique flags submitted yet.';
+            ranking.appendChild(item);
+        } else {
+            topFlagged.forEach(([technique, count]) => {
+                const item = document.createElement('li');
+                item.textContent = `${technique.replace(/_/g, ' ')} — ${count}`;
+                ranking.appendChild(item);
+            });
+        }
     } catch (error) {
         display.textContent = 'Live counters are temporarily unavailable.';
     }

@@ -111,6 +111,7 @@ section {
     border-bottom: 1px solid var(--border);
 }
 .technique-card:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.technique-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem; }
 .technique-label {
     display: inline-block;
     background: var(--accent-light);
@@ -122,6 +123,11 @@ section {
     margin-bottom: 0.5rem;
     text-transform: capitalize;
 }
+.flag-button { flex: 0 0 auto; background: transparent; color: var(--muted); border: 1px solid var(--border); padding: 0.25rem 0.55rem; font-size: 0.8rem; }
+.flag-button:hover { background: var(--accent-light); color: var(--accent); }
+.flag-button:disabled { background: transparent; cursor: default; }
+.flag-button.flagged { color: #23623c; border-color: #b9d6c3; }
+.flag-button.flag-error { color: #a12622; }
 blockquote {
     font-family: Georgia, serif;
     font-size: 1.1rem;

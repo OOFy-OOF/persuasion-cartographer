@@ -46,7 +46,10 @@
             <h2>Live usage counters</h2>
             <p>Counts since this API process started; they reset when it restarts.</p>
             <div id="metrics-display" aria-live="polite">Loading counters...</div>
+            <h3>Most flagged techniques</h3>
+            <ol id="misattribution-ranking"><li>Loading feedback...</li></ol>
             <p class="metrics-note">Abstentions are counted only when the input is too short, garbled, or otherwise lacks enough intelligible content for analysis. Extensive texts—including satire, copypastas, neutral reporting, and quoted rhetoric—are still analysed; they may simply produce no technique spans. Quotes that fail the exact-substring check are removed. These are operational counts, not accuracy scores.</p>
+            <p class="metrics-note">Technique flags are user-submitted feedback, not verified errors. Counts reset when the API process restarts.</p>
         </section>
 
         <section class="tab-panel hidden" id="panel-download" role="tabpanel" aria-labelledby="tab-download" tabindex="0">
@@ -79,6 +82,6 @@
         </section>
     </main>
 
-    <script src="app.js?v=4"></script>
+    <script src="app.js?v=5"></script>
 </body>
 </html>

@@ -6,9 +6,10 @@ from time import monotonic
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
+from typing import get_args
 from dotenv import load_dotenv
 from analyzer import analyze, metrics_snapshot
-from schema import Analysis
+from schema import Analysis, Technique
 import os
 
 load_dotenv()
@@ -17,6 +18,14 @@ app = FastAPI()
 
 class AnalyzeRequest(BaseModel):
     text: str = Field(max_length=20000)
+
+
+class FeedbackRequest(BaseModel):
+    technique: Technique
+
+
+_MISATTRIBUTION_LOCK = Lock()
+_MISATTRIBUTIONS = {technique: 0 for technique in get_args(Technique)}
 
 
 RATE_LIMIT_WINDOW_SECONDS = 60
@@ -81,7 +90,30 @@ def health():
 
 @app.get("/metrics")
 def metrics():
-    return {**metrics_snapshot(), "scope": "since_api_start"}
+    with _MISATTRIBUTION_LOCK:
+        misattributions = _MISATTRIBUTIONS.copy()
+    return {
+        **metrics_snapshot(),
+        "misattributions": misattributions,
+        "scope": "since_api_start",
+    }
+
+
+@app.post("/feedback")
+def submit_feedback(req: FeedbackRequest, request: Request):
+    client_id = request.headers.get("x-client-ip") or (request.client.host if request.client else "unknown")
+    retry_after = _rate_limit_retry_after(client_id)
+    if retry_after is not None:
+        raise HTTPException(
+            status_code=429,
+            detail="Feedback limit reached. Please wait before trying again.",
+            headers={"Retry-After": str(retry_after)},
+        )
+
+    with _MISATTRIBUTION_LOCK:
+        _MISATTRIBUTIONS[req.technique] += 1
+        count = _MISATTRIBUTIONS[req.technique]
+    return {"ok": True, "technique": req.technique, "count": count}
 
 # Serve the frontend ONLY if running locally (on the VPS, Caddy handles this)
 web_dir = os.path.join(os.path.dirname(__file__), "..", "web")

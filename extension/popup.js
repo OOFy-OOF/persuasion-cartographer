@@ -55,7 +55,12 @@ function renderAnalysis(data) {
     }
     for (const span of data.technique_spans || []) {
         const card = addText(spans, 'article', 'technique-card', '');
-        addText(card, 'span', 'technique-label', span.technique.replace(/_/g, ' '));
+        const heading = addText(card, 'div', 'technique-heading', '');
+        const label = addText(heading, 'span', 'technique-label', span.technique.replace(/_/g, ' '));
+        const flagButton = addText(heading, 'button', 'flag-button', 'Flag inaccurate');
+        flagButton.type = 'button';
+        flagButton.setAttribute('aria-label', `Flag ${label.textContent} as inaccurate`);
+        flagButton.addEventListener('click', () => submitTechniqueFlag(span.technique, flagButton));
         addText(card, 'blockquote', '', span.quote);
         addText(card, 'p', 'explanation', span.explanation);
     }
@@ -69,6 +74,34 @@ function renderAnalysis(data) {
         framing.appendChild(item);
     }
     document.getElementById('framing-section').classList.toggle('hidden', framing.children.length === 0);
+}
+
+async function submitTechniqueFlag(technique, button) {
+    button.disabled = true;
+    button.textContent = 'Sending...';
+    button.classList.remove('flag-error');
+    try {
+        const { analyzeEndpoint } = await chrome.storage.local.get('analyzeEndpoint');
+        if (!analyzeEndpoint) throw new Error('Configure your API endpoint before sending feedback.');
+        const endpoint = new URL(analyzeEndpoint);
+        const hasPermission = await chrome.permissions.contains({ origins: [`${endpoint.origin}/*`] });
+        if (!hasPermission) throw new Error('The API host permission is missing.');
+        endpoint.pathname = endpoint.pathname.replace(/\/analyze$/, '/feedback');
+
+        const response = await fetch(endpoint.href, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ technique })
+        });
+        if (!response.ok) throw new Error(`Feedback failed (${response.status}).`);
+        button.textContent = 'Flagged ✓';
+        button.classList.add('flagged');
+    } catch (error) {
+        button.disabled = false;
+        button.textContent = 'Retry flag';
+        button.title = error.message || 'Could not submit feedback. Please try again.';
+        button.classList.add('flag-error');
+    }
 }
 
 analyzeButton.addEventListener('click', async () => {

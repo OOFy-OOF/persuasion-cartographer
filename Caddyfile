@@ -10,6 +10,11 @@
             header_up X-Client-IP {remote_host}
         }
     }
+    handle /feedback {
+        reverse_proxy api:8000 {
+            header_up X-Client-IP {remote_host}
+        }
+    }
     handle /health {
         reverse_proxy api:8000
     }

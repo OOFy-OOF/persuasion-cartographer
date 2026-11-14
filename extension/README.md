@@ -24,6 +24,8 @@ On first use, click the gear icon in the top-right of the extension popup to ope
 
 The tool abstains only when text is too short, garbled, or otherwise lacks enough intelligible content to analyse. Longer satire, copypastas, opinionated writing, neutral reporting, and quotations are still analysed; they may simply produce no technique spans.
 
+Use **Flag inaccurate** on a technique card to submit feedback about that label. These flags are user reports, not verified errors, and the counters reset when the API process restarts.
+
 ## Privacy & Limitations
 
 Browsers restrict script injection on some internal and store pages; simply paste text into the extension manually on those pages. 
