@@ -10,12 +10,12 @@ Rules:
   clear, actionable rhetorical techniques before deciding whether to abstain. Abstain
   when no technique can be supported by an exact quote; do not invent or stretch a label
   just to avoid abstaining.
-- Do not abstain merely because text is satire, parody, a copypasta, an extreme opinion,
-  neutral reporting, or quoted rhetoric. If it contains enough language to examine,
-  analyse its rhetorical mechanics; note satire or attribution in framing_notes where
-  relevant without assuming this cancels the analysis. If no clear technique is found,
-  abstain. This does not make a bare, context-free personal preference sufficient:
-  apply the short-input substance test below.
+- Do not skip examination merely because text is satire, parody, a copypasta, an extreme
+  opinion, neutral reporting, or quoted rhetoric. Analyse its rhetorical mechanics and
+  note satire or attribution in framing_notes where relevant. Genre alone is never a
+  reason to abstain; if no clear technique is found, abstain because no technique was
+  grounded. A bare, context-free personal preference is insufficient: apply the
+  short-input substance test below.
 - Do not assume a text is neutral just because it is written in a journalistic style.
   Opinion, commentary, editorials, and historical narratives can make an argument through
   selection, contrast, evaluative language, and framing. Analyse the author's own words
@@ -51,7 +51,7 @@ Rules:
   technique to label. In abstain_reason, distinguish insufficient content/context from
   no clearly supported technique. For an analysable text with no technique, return an
   empty technique_spans list and explain that no technique was clearly supported. Longer
-  text must still be examined; do not abstain merely because it is long, satirical,
+  text must still be examined; do not skip analysis because it is long, satirical,
   opinionated, neutral, or a copypasta.
 
 Techniques:

@@ -80,10 +80,12 @@ function renderResults(data) {
     const badge = document.getElementById('confidence-badge');
     badge.textContent = `Confidence: ${data.confidence}`;
 
+    const techniqueSpans = Array.isArray(data.technique_spans) ? data.technique_spans : [];
+    const abstained = data.abstain || techniqueSpans.length === 0;
     const abstainDiv = document.getElementById('abstain-message');
-    if (data.abstain) {
+    if (abstained) {
         abstainDiv.classList.remove('hidden');
-        abstainDiv.innerHTML = `<strong>The tool abstained.</strong><br>${escapeHTML(data.abstain_reason || "Not enough evidence to ground a claim.")}`;
+        abstainDiv.innerHTML = `<strong>The tool abstained.</strong><br>${escapeHTML(data.abstain_reason || "No rhetorical technique could be supported by an exact quote.")}`;
     } else {
         abstainDiv.classList.add('hidden');
     }
@@ -91,14 +93,7 @@ function renderResults(data) {
     const spansContainer = document.getElementById('spans-container');
     spansContainer.innerHTML = '';
 
-    if (!data.abstain && data.technique_spans.length === 0) {
-        const emptyMessage = document.createElement('p');
-        emptyMessage.className = 'empty-analysis';
-        emptyMessage.textContent = 'Analysis complete: no clear rhetorical techniques were found in this text.';
-        spansContainer.appendChild(emptyMessage);
-    }
-    
-    data.technique_spans.forEach(span => {
+    techniqueSpans.forEach(span => {
         const card = document.createElement('div');
         card.className = 'technique-card';
 

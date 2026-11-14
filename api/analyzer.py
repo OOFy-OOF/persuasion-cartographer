@@ -52,8 +52,14 @@ def analyze(text: str) -> Analysis:
         # abstain flag consistent with the spans that survived exact-quote validation.
         result.abstain = False
         result.abstain_reason = None
-    # An empty span list can still be a completed analysis (for example, neutral prose).
-    # Preserve the model's abstention decision instead of treating no findings as abstention.
+    else:
+        # Under the recall-first policy, no quote-grounded technique is an abstention,
+        # whether the input was too thin or analysis found no supported technique.
+        if before > 0:
+            result.abstain_reason = "The proposed technique could not be grounded in an exact quote from the text."
+        elif not result.abstain_reason:
+            result.abstain_reason = "No rhetorical technique could be supported by an exact quote."
+        result.abstain = True
 
     with _METRICS_LOCK:
         _METRICS["analyses"] += 1

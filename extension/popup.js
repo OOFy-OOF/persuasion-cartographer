@@ -40,20 +40,19 @@ function renderAnalysis(data) {
 
     const abstain = document.getElementById('abstain');
     abstain.replaceChildren();
-    if (data.abstain) {
+    const techniqueSpans = Array.isArray(data.technique_spans) ? data.technique_spans : [];
+    const abstained = data.abstain || techniqueSpans.length === 0;
+    if (abstained) {
         abstain.classList.remove('hidden');
         addText(abstain, 'strong', '', 'The tool abstained.');
-        addText(abstain, 'div', '', data.abstain_reason || 'The text did not support a grounded analysis.');
+        addText(abstain, 'div', '', data.abstain_reason || 'No rhetorical technique could be supported by an exact quote.');
     } else {
         abstain.classList.add('hidden');
     }
 
     const spans = document.getElementById('spans');
     spans.replaceChildren();
-    if (!data.abstain && (data.technique_spans || []).length === 0) {
-        addText(spans, 'p', 'empty-analysis', 'Analysis complete: no clear rhetorical techniques were found in this text.');
-    }
-    for (const span of data.technique_spans || []) {
+    for (const span of techniqueSpans) {
         const card = addText(spans, 'article', 'technique-card', '');
         const heading = addText(card, 'div', 'technique-heading', '');
         const label = addText(heading, 'span', 'technique-label', span.technique.replace(/_/g, ' '));
