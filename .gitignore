@@ -17,3 +17,4 @@ Thumbs.db
 # Reference materials
 sources/
 '@ | Set-Content -Path .gitignore
+AGENTS.md
