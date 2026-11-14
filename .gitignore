@@ -1,20 +1,20 @@
-@'
-# Python
+# Python bytecode and virtual environments
 __pycache__/
-__pycache___ignore/
-*.pyc
+*.py[cod]
 venv/
 venv_ignore/
 .venv/
+__pycache___ignore/
 
-# Environment variables (DO NOT COMMIT)
+# Secrets and local environment
 .env
+.env.*
+!.env.example
 
-# OS files
+# Operating system files
 .DS_Store
 Thumbs.db
 
-# Reference materials
+# Synced project references (keep local; do not commit)
 sources/
-'@ | Set-Content -Path .gitignore
 AGENTS.md

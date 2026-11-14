@@ -1,4 +1,5 @@
 #!/bin/bash
+umask 077
 
 echo "Persuasion Cartographer Setup..."
 
@@ -10,8 +11,12 @@ fi
 
 # 2. Prompt for API Key (hidden)
 echo "Please enter your Hostinger AI Router API Key:"
-read -s API_KEY
+read -r -s API_KEY
 echo ""
+if [ -z "$API_KEY" ]; then
+    echo "An API key is required."
+    exit 1
+fi
 
 # 3. Prompt for Model
 echo "Enter the AI Model to use (Enter for default):"
@@ -25,6 +30,7 @@ AI_ROUTER_API_KEY="$API_KEY"
 AI_ROUTER_BASE_URL="https://router.hostinger.com/v1"
 AI_ROUTER_MODEL="$MODEL"
 EOF
+chmod 600 .env
 
 # 5. Start the containers
 echo "Building and starting Docker containers..."

@@ -1,10 +1,14 @@
 persuasioncartographer.duckdns.org {
     handle /api/* {
         uri strip_prefix /api
-        reverse_proxy api:8000
+        reverse_proxy api:8000 {
+            header_up X-Client-IP {remote_host}
+        }
     }
     handle /analyze {
-        reverse_proxy api:8000
+        reverse_proxy api:8000 {
+            header_up X-Client-IP {remote_host}
+        }
     }
     handle /health {
         reverse_proxy api:8000

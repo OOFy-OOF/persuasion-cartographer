@@ -57,13 +57,16 @@ document.getElementById('analyze-btn').addEventListener('click', async () => {
             body: JSON.stringify({ text })
         });
         
-        if (!res.ok) throw new Error("API error");
+        if (!res.ok) {
+            const error = await res.json().catch(() => ({}));
+            throw new Error(error.detail || `Analysis failed (${res.status}).`);
+        }
         const data = await res.json();
         
         renderResults(data);
         refreshMetrics();
     } catch (e) {
-        alert("Error analyzing text. Is the server running?");
+        alert(`Error analyzing text: ${e.message}`);
     } finally {
         btn.disabled = false;
         btn.textContent = "Analyze Text";

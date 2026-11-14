@@ -10,7 +10,9 @@ load_dotenv()
 
 client = OpenAI(
     base_url=os.environ.get("AI_ROUTER_BASE_URL"),
-    api_key=os.environ.get("AI_ROUTER_API_KEY")
+    api_key=os.environ.get("AI_ROUTER_API_KEY"),
+    timeout=45.0,
+    max_retries=1,
 )
 
 # In-memory counters for the lifetime of this API process.
