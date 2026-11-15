@@ -53,4 +53,4 @@ Usage, abstention, quote-drop, and technique-feedback counts are held in API pro
 
 ## AI use and acknowledgement
 
-OpenAI Codex was used to assist with code generation tasks. The analysis feature also relies on the model configured by `AI_ROUTER_MODEL`. Its interpretations may be wrong; exact-quote validation only guarantees that a quote appears in the input, not that the interpretation is correct.
+OpenAI Codex was used to assist with code generation tasks. All commits to the main branch are done after human verification and approval. The analysis feature also relies on the model configured by `AI_ROUTER_MODEL`. Its interpretations may be wrong; exact-quote validation only guarantees that a quote appears in the input, not that the interpretation is correct. 
