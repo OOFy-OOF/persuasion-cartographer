@@ -4,6 +4,8 @@ Persuasion Cartographer maps rhetorical techniques in text. It highlights exact 
 
 The tool prioritises recall over precision: it analyses jokes, satire, and strong opinions when a technique can be grounded in an exact quote, leaving readers to supply context. It abstains when there is too little substance to examine, no technique can be grounded in an exact quote, or the text is purely literal or administrative with no persuasive framing.
 
+Created for the Decode the Noise challenge by Hostinger in the Junction 2026 Hackathon.
+
 ## Project layout
 
 - `web/` — static website and downloadable extension package.
